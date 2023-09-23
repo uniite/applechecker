@@ -40,11 +40,9 @@ class SnsAlert(BaseAlert):
                     att_dict[key] = {'DataType': 'Binary', 'BinaryValue': value}
             response = topic.publish(Message=message, MessageAttributes=att_dict)
             message_id = response['MessageId']
-            print(
-                "Published message with attributes %s to topic %s.", attributes,
-                topic.arn)
+            print("Published message with attributes %s to topic %s." % (attributes, topic.arn))
         except ClientError:
-            print("Couldn't publish message to topic %s.", topic.arn)
+            print("Couldn't publish message to topic %s." % topic.arn)
             raise
         else:
             return message_id
