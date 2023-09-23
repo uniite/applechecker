@@ -12,7 +12,7 @@ except ImportError:
     # python2
     from urllib import urlopen
     from urllib import urlencode
-from Alert import SmtpAlert
+from Alert import SnsAlert
 
 # only tested for US stores
 URL = "http://www.apple.com/shop/retail/pickup-message"
@@ -29,7 +29,8 @@ INITMSG = "{} Start monitoring {} inventory in area {}."
 
 def main(model, zipcode, sec=5, *alert_params):
     good_stores = []
-    my_alert = SmtpAlert(*alert_params)
+    my_alert = SnsAlert(*alert_params)
+
     params = {'parts.0': model,
               'location': zipcode}
     sec = int(sec)
