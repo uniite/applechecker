@@ -49,7 +49,7 @@ def main(model, zipcode, sec=5, *alert_params):
             response = urlopen(
                 "{}?{}".format(URL, urlencode(params)))
             json_body = json.load(response)['body']
-            stores = json_body['stores'][:8]
+            stores = json_body['stores']
             item = (stores[0]['partsAvailability']
                     [model]['messageTypes']['regular']['storePickupProductTitle'])
             if init:
